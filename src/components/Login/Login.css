@@ -1,0 +1,32 @@
+.login {
+    min-width: 396px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.login__input {
+    border-bottom: 1px solid #E8E8E8;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin: 5px 0 24px;
+    min-height: 32px;
+}
+
+.login__input:focus {
+    outline: none;
+}
+
+.login__input-span {
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: left;
+    color: #A0A0A0;
+}

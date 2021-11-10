@@ -1,0 +1,91 @@
+.project {
+    max-width: 100vw;
+    min-height: 608px;
+    background-color: #FFF;
+    padding: 110px 70px 23px 70px;
+    margin: 0;
+}
+
+.project__header {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    text-align: left;
+    border-bottom: 1px solid #000;
+    margin: 0;
+    padding: 0 0 23px 0;
+}
+
+.project__info {
+    display: flex;
+}
+
+.project__info-header {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    padding: 70px 0 26px;
+    max-width: 550px;
+    margin: 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.project__info-header_text {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 0 110px 0;
+    max-width: 550px;
+    margin: 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.project__graph-weeks {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+}
+
+.project__graph-stack {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #A0A0A0;
+    margin: 13px 0 0;
+    text-align: center;
+}
+
+.project__graph {
+    display: flex;
+}
+
+.project__graph-back {
+    flex-grow: 1;
+}
+
+.project__graph-weeks_back {
+    background-color: #61dafb;
+}
+
+.project__graph-front {
+    flex-grow: 5;
+}
+
+.project__graph-weeks_front {
+    background-color: #FFF;
+}

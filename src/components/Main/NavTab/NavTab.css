@@ -1,0 +1,76 @@
+.nav__buttons-item {
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}
+
+.nav__buttons_for_user-signup {
+    color: #FFF;
+    background-color: #000;
+    margin-right: 30px;
+}
+
+.nav__buttons_for_user-signin {
+    background-color: #F6BDFF;
+    border-radius: 3px;
+    height: 32px;
+    width: 76px;
+    text-align: center;
+}
+
+.nav__buttons {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__buttons_for_films-item {
+    background-color: transparent;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 18px;
+    letter-spacing: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.nav__buttons_for_films-item:active {
+    font-weight: 500;
+}
+
+.nav__button_for_account-item {
+    background-color: #FFF;
+    border-radius: 40px;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: center;
+    height: 32px;
+    width: 100px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav__account-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #F9F9F9;
+    margin-left: 0;
+    background-image: url('../../../images/icon__account.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}

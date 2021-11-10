@@ -1,0 +1,16 @@
+.profile {
+    min-width: 396px;
+}
+
+.profile__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile__info-text {
+
+
+}
