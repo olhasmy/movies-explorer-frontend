@@ -59,6 +59,7 @@
 }
 
 .promo_img {
+    max-width: 100%;
     background-image: url("../../../images/words.svg");
     background-repeat: no-repeat;
     background-position: right;

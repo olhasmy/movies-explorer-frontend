@@ -51,7 +51,7 @@
 }
 
 .navtab__button {
-    background-image: url('../../../images/cross.svg');
+    background-image: url('../../../images/icon__cross.svg');
     transition: opacity 0.3s linear;
     border: none;
     background-color: transparent;

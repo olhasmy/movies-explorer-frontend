@@ -120,7 +120,7 @@
 }
 
 .nav__button-burger {
-    background-image: url('../../images/icon__burgerOpen.png');
+    background-image: url('../../images/icon__burger.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 44px;
@@ -157,7 +157,7 @@
     }
 
     .nav__button-burger {
-        background-image: url('../../images/icon__burgerOpen.png');
+        background-image: url('../../images/icon__burger.svg');
         width: 40px;
         height: 43px;
     }

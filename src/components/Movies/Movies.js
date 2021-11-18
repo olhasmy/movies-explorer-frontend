@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
-import MoviesCardMore from "./MoviesCardMore/MoviesCardMore";
 
 function Movies({ saved }) {
 
@@ -14,7 +13,6 @@ function Movies({ saved }) {
             <Header/>
             <SearchForm />
             <MoviesCardList saved={ saved }/>
-            <MoviesCardMore />
             <Footer />
         </>
     );

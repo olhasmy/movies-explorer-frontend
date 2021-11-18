@@ -87,10 +87,10 @@
 }
 
 .card__group-cross {
-    background-image: url('../../../images/cross.svg');
+    background-image: url('../../../images/icon__cross.svg');
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 643px) {
     .card  {
         padding: 0 0 20px;
         margin: 0;
@@ -101,7 +101,7 @@
         flex-wrap: wrap;
         max-width: 330px;
         padding: 0;
-        margin: 0;
+        margin: auto;
     }
 
     .card__group {

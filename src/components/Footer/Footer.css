@@ -90,6 +90,7 @@
 
     .footer__info-links {
         flex-direction: column;
+        padding: 0;
     }
 
     .footer__info-link_item {

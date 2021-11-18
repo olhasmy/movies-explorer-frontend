@@ -115,7 +115,7 @@
     }
 
     .project__info {
-        grid-template-columns: repeat(2, 319px);
+        grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 124px);
         grid-gap: 0 30px;
         margin: 0;
@@ -146,7 +146,7 @@
     }
 
     .project__info {
-        grid-template-columns: repeat(1, 284px);
+        grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(2, 108px);
         grid-gap: 56px;
         margin: 0 0 65px 0;
