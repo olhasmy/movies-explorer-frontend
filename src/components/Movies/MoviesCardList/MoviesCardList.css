@@ -3,3 +3,17 @@
     padding: 70px 70px 30px 70px;
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .cards {
+        padding: 60px 30px;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .cards {
+        padding: 47px 10px 0;
+        flex-direction: column;
+        align-items: center;
+    }
+}

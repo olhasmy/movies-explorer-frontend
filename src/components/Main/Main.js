@@ -8,9 +8,12 @@ import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
 function Main() {
+
+    const main = true;
+
     return (
         <>
-            <Header />
+            <Header main = { main }/>
             <>
                 <Promo />
                 <AboutProject />

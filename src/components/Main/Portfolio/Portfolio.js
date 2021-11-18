@@ -5,10 +5,11 @@ import arrow from '../../../images/arrow.svg';
 function Portfolio() {
     return (
         <div className="portfolio">
-            <ul className="portfolio__links">Портфолио
-                <li><a href='https://ru-ru.facebook.com/' className='portfolio__links-item'>Статичный сайт<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
-                <li><a href='https://ru-ru.facebook.com/' className='portfolio__links-item'>Адаптивный сайт<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
-                <li><a href='https://ru-ru.facebook.com/' className='portfolio__links-item'>Одностраничное приложение<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
+            <h2 className="portfolio__header">Портфолио</h2>
+            <ul className="portfolio__links">
+                <li className="portfolio__link"><a href='https://gonzoooo.github.io/how-to-learn' target="_blank" rel="noreferrer" className='portfolio__links-item'>Статичный сайт<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
+                <li className="portfolio__link"><a href='https://gonzoooo.github.io/russian-travel' target="_blank" rel="noreferrer" className='portfolio__links-item'>Адаптивный сайт<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
+                <li className="portfolio__link"><a href='https://gonzoooo.nomoredomains.club' target="_blank" rel="noreferrer" className='portfolio__links-item'>Одностраничное приложение<img src={arrow} alt='стрелка ссылка на сайт' className='portfolio__links-img'/></a></li>
             </ul>
         </div>
     );

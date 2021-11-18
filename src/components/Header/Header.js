@@ -1,13 +1,12 @@
 import React from 'react';
 import './Header.css';
-import NavTab from "../Main/NavTab/NavTab";
-import Logo from "../Logo/Logo";
+import Navigation from "../Navigation/Navigation";
 
-function Header() {
+function Header({ main }) {
+
     return (
-        <header className="header">
-            <Logo />
-            <NavTab />
+        <header className={ main ? 'header' : 'header header__logged'}>
+            <Navigation main={ main } />
         </header>
     );
 }

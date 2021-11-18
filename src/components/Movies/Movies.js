@@ -5,12 +5,15 @@ import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import MoviesCardMore from "./MoviesCardMore/MoviesCardMore";
 
-function Movies() {
+function Movies({ saved }) {
+
+    saved = false;
+
     return (
         <>
-            <Header />
+            <Header/>
             <SearchForm />
-            <MoviesCardList />
+            <MoviesCardList saved={ saved }/>
             <MoviesCardMore />
             <Footer />
         </>

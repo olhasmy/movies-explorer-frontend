@@ -14,7 +14,7 @@ function Login() {
             nav="Регистрация"
         >
             <div className="login">
-                <div className="input">
+                <div className="inputs">
                     <span className="login__input-span">E-mail</span>
                     <input
                         required

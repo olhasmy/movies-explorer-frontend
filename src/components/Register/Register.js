@@ -13,8 +13,8 @@ function Register() {
             nav="Войти"
         >
             <div className="register">
-                <div className="input">
-                    <span className="register__input-span">Имя</span>
+                <div className="inputs">
+                    <label className="register__input-label">Имя</label>
                     <input
                         required
                         minLength="2"
@@ -23,7 +23,7 @@ function Register() {
                         name="Name"
                         autoComplete="on"
                     />
-                    <span className="register__input-span">E-mail</span>
+                    <label className="register__input-label">E-mail</label>
                     <input
                         required
                         minLength="2"
@@ -33,14 +33,16 @@ function Register() {
                         name="Email"
                         autoComplete="on"
                     />
-                    <span className="register__input-span">Пароль</span>
+                    <label className="register__input-label">Пароль</label>
                     <input
                         required
+                        id="register__input_for_password"
                         className="register__input register__input_for_password"
                         type="password"
                         name="Password"
                         autoComplete="on"
                     />
+                    <span id="register__input_for_password--error" className="register__input_for_password--error">Что-то пошло не так...</span>
                 </div>
             </div>
         </Form>

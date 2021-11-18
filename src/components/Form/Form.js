@@ -16,7 +16,7 @@ function Form({name, onSubmit, title, children, submitBtnText, question, nav}) {
                 <Logo />
                     <h2 className="form__header">{title}</h2>
                 {children}
-                    <button className="form__submit-button">{submitBtnText}</button>
+                    <button className="form__submit-button" type="submit">{submitBtnText}</button>
             </div>
             <Route path="/signup">
                 <NavLink

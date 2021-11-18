@@ -1,38 +1,23 @@
 import React from 'react';
 import './NavTab.css';
-import {NavLink, Route} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-function NavTab() {
+function NavTab({ isOpen, isClose }) {
+
     return (
-        <nav>
-            <Route path="/profile">
-                <ul className="nav__buttons nav__buttons_for_films">
-                    <NavLink to="/films">
-                        <li><button className="nav__buttons-item nav__buttons_for_films-item">Фильмы</button></li>
-                    </NavLink>
-                    <NavLink to="/savedFilms">
-                        <li><button className="nav__buttons-item nav__buttons_for_films-item">Сохраненные фильмы</button></li>
-                    </NavLink>
+        <div className={ isOpen ? "navtab__visible overlay" : "navtab"}>
+            <nav className="navtab__container">
+                <button className="navtab__button" onClick={ isClose }/>
+                <ul className="navtab__links">
+                    <li><NavLink exact to="/" activeClassName="navtab__link_active" className="navtab__link">Главная</NavLink></li>
+                    <li><NavLink to="/movies" activeClassName="navtab__link_active" className="navtab__link">Фильмы</NavLink></li>
+                    <li><NavLink to="/savedMovies" activeClassName="navtab__link_active" className="navtab__link">Сохраненные фильмы</NavLink></li>
                 </ul>
-            </Route>
-            <Route path="/profile">
-                <ul className="nav__buttons nav__button_for_account">
-                    <NavLink to="/films">
-                        <li><button className="nav__buttons-item nav__button_for_account-item">Аккаунт<div className="nav__account-icon"/></button></li>
-                    </NavLink>
+                <ul className="navtab__links navtab__link_for_account">
+                    <li><Link to="/profile" className="nav__links-item nav__link_for_account-item">Аккаунт<div className="nav__account-icon"/></Link></li>
                 </ul>
-            </Route>
-            <Route exact path="/">
-                <ul className="nav__buttons nav__buttons_for_user">
-                    <NavLink to="/signup">
-                        <li><button className="nav__buttons-item nav__buttons_for_user-signup">Регистрация</button></li>
-                    </NavLink>
-                    <NavLink to="/signin">
-                        <li><button className="nav__buttons-item nav__buttons_for_user-signin">Войти</button></li>
-                    </NavLink>
-                </ul>
-            </Route>
-        </nav>
+            </nav>
+        </div>
     );
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import '../../Movies/Preloader/Preloader.css';
+import './Preloader.css';
 
 const Preloader = () => {
+
     return (
         <div className="preloader">
             <div className="preloader__container">
