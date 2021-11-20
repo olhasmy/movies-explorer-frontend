@@ -71,7 +71,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 450px) {
     .form {
         padding: 56px 30px 30px;
     }
