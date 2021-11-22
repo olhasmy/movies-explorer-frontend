@@ -1,0 +1,15 @@
+.logo {
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-items: left;
+    transition: opacity 0.3s linear;
+}
+
+.logo:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}

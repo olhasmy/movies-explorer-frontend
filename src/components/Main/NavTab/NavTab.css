@@ -1,0 +1,102 @@
+.navtab {
+    display: none;
+}
+
+.navtab__visible {
+    display: flex;
+}
+
+.navtab__container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 2;
+    transition: all 0.5s linear;
+    min-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFF;
+    z-index: 1;
+}
+
+.navtab__links {
+    list-style-type: none;
+    display: grid;
+    margin-top: 115px;
+    padding: 0;
+    grid-gap: 27px;
+}
+
+.navtab__link {
+    color: #000;
+    text-decoration: none;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0;
+}
+
+.navtab__link_for_account {
+    margin-top: 605px;
+}
+
+
+.navtab__link_active {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.navtab__button {
+    background-image: url('../../../images/icon__cross.svg');
+    transition: opacity 0.3s linear;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 13px;
+    margin-left: auto;
+    margin-right: 22px;
+    margin-top: 22px;
+}
+
+.navtab__button:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.overlay {
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+    visibility: visible;
+}
+
+@media screen and (max-width: 320px) {
+    .navtab__container {
+        min-width: 100vw;
+        left: 0;
+    }
+
+    .navtab__link_for_account {
+        padding-top: 325px;
+    }
+
+    .navtab__button {
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+
+    .navtab__links {
+        margin-top: 100px;
+    }
+}
