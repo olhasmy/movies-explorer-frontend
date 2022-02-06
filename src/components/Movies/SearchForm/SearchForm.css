@@ -39,6 +39,31 @@
     letter-spacing: 0;
     margin: 0;
     padding: 0 0 0 19px;
+    position: relative;
+}
+
+.search__form-span {
+    color: #FF3055;
+    margin-top: 6px;
+    margin-right: auto;
+    padding: 0;
+    font-family: Inter, sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: left;
+    max-width: 396px;
+    text-wrap: normal;
+    position: absolute;
+    transform: translate(-50%, -40%);
+    top: 50%;
+    left: 40%;
+}
+
+.search__form-span_hidden {
+    display: none;
 }
 
 .search__form-input:focus {
@@ -112,5 +137,11 @@
 
     .search__form-input::placeholder {
         background-image: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .login__input-span {
+        max-width: 260px;
     }
 }

@@ -12,7 +12,7 @@
     border-left: none;
     border-right: none;
     border-top: none;
-    margin: 5px 0 24px;
+    margin: 5px 0 0;
     min-height: 28px;
     padding: 0;
 }
@@ -34,13 +34,10 @@
     letter-spacing: 0;
     text-align: left;
     color: #A0A0A0;
+    margin: 24px 0 0;
 }
 
-.register__input--error {
-    color: #FF3055;
-}
-
-.register__input_for_password--error {
+.register__input-span {
     color: #FF3055;
     margin-top: 6px;
     margin-right: auto;
@@ -57,5 +54,9 @@
 @media screen and (max-width: 450px) {
     .register {
         min-width: 260px;
+    }
+
+    .register__input-span {
+        max-width: 260px;
     }
 }

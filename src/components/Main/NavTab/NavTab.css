@@ -27,6 +27,7 @@
     margin-top: 115px;
     padding: 0;
     grid-gap: 27px;
+    text-align: center;
 }
 
 .navtab__link {
@@ -38,16 +39,12 @@
     font-weight: 500;
     line-height: 22px;
     letter-spacing: 0;
+    padding-bottom: 7px;
 }
-
-.navtab__link_for_account {
-    margin-top: 605px;
-}
-
 
 .navtab__link_active {
     font-weight: 500;
-    text-decoration: underline;
+    border-bottom: solid #000 2px;
 }
 
 .navtab__button {
@@ -81,14 +78,24 @@
     visibility: visible;
 }
 
-@media screen and (max-width: 320px) {
+.navtab__link_for_account {
+    margin-top: 605px;
+}
+
+@media screen and (max-width: 1300px) {
+    .navtab__link_for_account {
+        margin-top: 325px;
+    }
+}
+
+@media screen and (max-width: 532px) {
     .navtab__container {
         min-width: 100vw;
         left: 0;
     }
 
     .navtab__link_for_account {
-        padding-top: 325px;
+        padding-top: 225px;
     }
 
     .navtab__button {

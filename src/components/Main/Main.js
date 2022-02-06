@@ -12,7 +12,7 @@ function Main() {
     const main = true;
 
     return (
-        <>
+        <main>
             <Header main = { main }/>
             <>
                 <Promo />
@@ -22,7 +22,7 @@ function Main() {
                 <Portfolio />
             </>
             <Footer />
-        </>
+        </main>
     );
 }
 

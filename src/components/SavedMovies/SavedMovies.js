@@ -4,15 +4,21 @@ import SearchForm from "../../components/Movies/SearchForm/SearchForm";
 import MoviesCardList from "../Movies/MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 
-function savedMovies({ saved }) {
-
-    saved = true;
+function savedMovies({ movies, savedMovies, loading, onDeleteMovie, onShortMovies, onSearchSavedMovies }) {
 
     return (
         <>
             <Header/>
-            <SearchForm />
-            <MoviesCardList saved={ saved }/>
+            <SearchForm
+                onSearchSavedMovies={ onSearchSavedMovies }
+                onShortMovies={ onShortMovies }
+            />
+            <MoviesCardList
+                savedMovies={ savedMovies }
+                loading={ loading }
+                onDeleteMovie={ onDeleteMovie }
+                movies={ movies }
+            />
             <Footer />
         </>
     );
