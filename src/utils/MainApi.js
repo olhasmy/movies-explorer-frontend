@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3007";
+const BASE_URL = "https://api.movies.gonzoooo.nomoredomains.monster";
 const MOVIES_URL = "https://api.nomoreparties.co";
 
 export const handleResponse = (res) => {
