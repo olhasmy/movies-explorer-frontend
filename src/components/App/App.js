@@ -82,6 +82,7 @@ function App() {
         setMovies([]);
         setSavedMovies([]);
         setCurrentUser({});
+        setSearchValue({});
         localStorage.clear();
         history.push("/");
     }
