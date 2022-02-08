@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.movies.gonzoooo.nomoredomains.monster";
+const BASE_URL = "http://localhost:3001";
 const MOVIES_URL = "https://api.nomoreparties.co";
 
 export const handleResponse = (res) => {
@@ -15,7 +15,7 @@ export const register = (name, email, password) => {
         credentials: "include",
         method: "POST",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, password }),
@@ -28,7 +28,7 @@ export const authorize = (email, password) => {
         credentials: "include",
         method: "POST",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
@@ -38,10 +38,10 @@ export const authorize = (email, password) => {
 //проверка токена
 export const checkToken = () => {
     return fetch(`${BASE_URL}/users/me`, {
-        credentials: 'include',
+        credentials: "include",
         method: "GET",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
     }).then((res) => handleResponse(res));
@@ -50,14 +50,14 @@ export const checkToken = () => {
 //получили информацию
 export const getUserInfo = () => {
     return fetch(`${BASE_URL}/users/me`, {
-        credentials: 'include',
+        credentials: "include",
         method: "GET",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
     }).then((res) => handleResponse(res));
-}
+};
 
 //обновили информацию
 export const setUserInfo = (name, email) => {
@@ -65,12 +65,12 @@ export const setUserInfo = (name, email) => {
         credentials: "include",
         method: "PATCH",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email }),
     }).then((res) => handleResponse(res));
-}
+};
 
 //добавили фильм
 export const saveMovie = (movie) => {
@@ -78,7 +78,7 @@ export const saveMovie = (movie) => {
         credentials: "include",
         method: "POST",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -93,9 +93,9 @@ export const saveMovie = (movie) => {
             nameRU: movie.nameRU,
             nameEN: movie.nameEN,
             movieId: movie.id,
-        })
+        }),
     }).then((res) => handleResponse(res));
-}
+};
 
 //удаление фильма
 export const deleteMovie = (_id) => {
@@ -103,11 +103,11 @@ export const deleteMovie = (_id) => {
         credentials: "include",
         method: "DELETE",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
     }).then((res) => handleResponse(res));
-}
+};
 
 //получили фильмы
 export const getSavedMovies = () => {
@@ -115,8 +115,8 @@ export const getSavedMovies = () => {
         credentials: "include",
         method: "GET",
         headers: {
-            "Accept": "application/json",
+            Accept: "application/json",
             "Content-Type": "application/json",
         },
     }).then((res) => handleResponse(res));
-}
+};

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -15,7 +15,6 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import InfoTooltip from "../InfoTooltiip/InfoTooltip";
 import { errorMessages } from "../../utils/errorMessages";
 
-
 function App() {
     const history = useHistory();
     const [loggedIn, setLoggedIn] = React.useState(false);
@@ -26,7 +25,10 @@ function App() {
     const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
     const [isSuccess, setIsSuccess] = React.useState(false);
     const [infoMessage, setInfoMessage] = React.useState("");
-    const [isShortMovies, setIsShortMovies] = React.useState(false);
+    const [searchValue, setSearchValue] = React.useState({});
+    const [isShortMovies, setIsShortMovies] = React.useState(
+        searchValue?.isCheckbox
+    );
     const location = useLocation().pathname;
 
     function handleRegistration(name, email, password) {
@@ -36,13 +38,14 @@ function App() {
             .then((res) => {
                 if (res) {
                     setLoading(false);
-                    localStorage.setItem("jwt", res.token);
-                    setLoggedIn(true);
-                    history.push("/movies");
                     setIsSuccess(true);
-                    setInfoMessage("Вы успешно зарегистрировались!")
+                    setInfoMessage("Вы успешно зарегистрировались!");
                     setIsInfoTooltipOpen(true);
                 }
+            })
+
+            .then(() => {
+                handleAuthorization(email, password);
             })
             .catch((e) => {
                 setLoading(false);
@@ -62,7 +65,7 @@ function App() {
                 setLoading(false);
                 history.push("/movies");
                 setIsSuccess(true);
-                setInfoMessage("Вы успешно авторизовались!")
+                setInfoMessage("Вы успешно авторизовались!");
                 setIsInfoTooltipOpen(true);
             })
             .catch((e) => {
@@ -80,7 +83,7 @@ function App() {
         setSavedMovies([]);
         setCurrentUser({});
         localStorage.clear();
-        history.push('/');
+        history.push("/");
     }
 
     function handleUpdateUser(name, email) {
@@ -90,7 +93,7 @@ function App() {
                 setCurrentUser(name, email);
                 setIsSuccess(true);
                 setIsInfoTooltipOpen(true);
-                setInfoMessage("Данные успешно изменены!")
+                setInfoMessage("Данные успешно изменены!");
             })
             .catch((e) => {
                 setInfoMessage(errorMessages(e));
@@ -111,11 +114,15 @@ function App() {
     }
 
     function handleDislikeMovie(movie) {
-        const movieForDelete = savedMovies.find((item) => item.movieId === movie.id);
+        const movieForDelete = savedMovies.find(
+            (item) => item.movieId === movie.id
+        );
         mainApi
             .deleteMovie(movieForDelete._id)
             .then(() => {
-                setSavedMovies((savedMovies) => savedMovies.filter((item) => item !== movieForDelete));
+                setSavedMovies((savedMovies) =>
+                    savedMovies.filter((item) => item !== movieForDelete)
+                );
             })
             .catch((e) => {
                 setInfoMessage(errorMessages(e));
@@ -127,7 +134,9 @@ function App() {
         mainApi
             .deleteMovie(movie._id)
             .then(() => {
-                setSavedMovies((savedMovies) => savedMovies.filter((item) => item !== movie));
+                setSavedMovies((savedMovies) =>
+                    savedMovies.filter((item) => item !== movie)
+                );
             })
             .catch((e) => {
                 setInfoMessage(errorMessages(e));
@@ -149,99 +158,116 @@ function App() {
         if (location === "/movies") {
             movies.forEach((movie) => {
                 if (movie.nameRU.toLowerCase().indexOf(keyword) > -1) {
-                    if(isShortMovies) {
+                    if (isShortMovies) {
                         movie.duration <= 40 && foundMovies.push(movie);
                     } else {
                         foundMovies.push(movie);
                     }
                 }
-            })
+            });
         } else {
             savedMovies.forEach((movie) => {
                 if (movie.nameRU.toLowerCase().indexOf(keyword) > -1) {
-                    if(isShortMovies) {
+                    if (isShortMovies) {
                         movie.duration <= 40 && foundMovies.push(movie);
                     } else {
                         foundMovies.push(movie);
                     }
                 }
-            })
+            });
         }
         return foundMovies;
     }
 
-    function handleSearchMovies(keyword) {
+    function handleSearchMovies(keyword, isCheckbox) {
         setLoading(true);
         setMovies([]);
 
         if (movies.length === 0) {
-            moviesApi.getMovies()
-                .then(resMovies => {
+            moviesApi
+                .getMovies()
+                .then((resMovies) => {
                     setMovies(resMovies);
                     const searchResult = handleSearchMoviesByKeyword(resMovies, keyword);
                     if (searchResult.length === 0) {
                         setMovies([]);
                         setIsInfoTooltipOpen(true);
-                        setInfoMessage("Ничего не найдено")
+                        setInfoMessage("Ничего не найдено");
                     } else {
-                        localStorage.setItem("movies", JSON.stringify(searchResult));
-                        setMovies(searchResult);
+                        localStorage.setItem("foundMovies", JSON.stringify(searchResult));
+                        setSearchValue({ ...searchValue, keyword: keyword });
+                        localStorage.setItem(
+                            "searchValue",
+                            JSON.stringify({ isCheckbox, keyword })
+                        );
+                        setMovies(JSON.parse(localStorage.getItem("foundMovies")));
                     }
                 })
                 .catch(() => {
                     setMovies([]);
                     setIsInfoTooltipOpen(true);
-                    setInfoMessage("Ничего не найдено")
+                    setInfoMessage("Ничего не найдено");
                 })
                 .finally(() => {
                     setLoading(false);
-                })
+                });
         } else {
             const searchResult = handleSearchMoviesByKeyword(movies, keyword);
             if (searchResult.length === 0) {
                 setMovies([]);
                 setLoading(false);
                 setIsInfoTooltipOpen(true);
-                setInfoMessage("Ничего не найдено")
+                setInfoMessage("Ничего не найдено");
             } else if (searchResult.length !== 0) {
-                localStorage.setItem("movies", JSON.stringify(searchResult));
-                setMovies(searchResult);
+                localStorage.setItem("foundMovies", JSON.stringify(searchResult));
+                setMovies(JSON.parse(localStorage.getItem("foundMovies")));
                 setLoading(false);
             } else {
                 setMovies([]);
+                setIsInfoTooltipOpen(true);
+                setInfoMessage("Ничего не найдено");
             }
         }
     }
 
     function handleSearchSavedMovies(keyword) {
-        const movies = localStorage.getItem("savedMovies");
-        const searchResult = handleSearchMoviesByKeyword(movies, keyword);
+        const searchResult = handleSearchMoviesByKeyword(savedMovies, keyword);
         if (searchResult.length === 0) {
             setIsInfoTooltipOpen(true);
-            setInfoMessage("Ничего не найдено")
+            setInfoMessage("Ничего не найдено");
         }
         setSavedMovies(searchResult);
     }
+
+    React.useEffect(() => {
+        const localSearchMovies = localStorage.getItem("foundMovies");
+        const localSearchValue = localStorage.getItem("searchValue");
+
+        if (loggedIn && localSearchValue && localSearchMovies) {
+            setMovies(JSON.parse(localSearchMovies));
+            setSearchValue(JSON.parse(localSearchValue));
+        }
+    }, [loggedIn]);
 
     React.useEffect(() => {
         const closeByEscape = (e) => {
             if (e.key === "Escape") {
                 closeInfoTooltip();
             }
-        }
-        document.addEventListener("keydown", closeByEscape)
-        return () => document.removeEventListener("keydown", closeByEscape)
+        };
+        document.addEventListener("keydown", closeByEscape);
+        return () => document.removeEventListener("keydown", closeByEscape);
     }, []);
 
     React.useEffect(() => {
-        if(localStorage.getItem("jwt")) {
+        if (localStorage.getItem("jwt")) {
             const token = localStorage.getItem("jwt");
             mainApi
                 .checkToken(token)
                 .then(() => {
-                    if(location === "/signin" ){
+                    if (location === "/signin") {
                         setLoggedIn(true);
-                        history.push('/movies');
+                        history.push("/movies");
                     } else {
                         setLoggedIn(true);
                     }
@@ -254,7 +280,7 @@ function App() {
     }, [location, history, loggedIn]);
 
     React.useEffect(() => {
-        if(localStorage.getItem("jwt")){
+        if (localStorage.getItem("jwt")) {
             setLoggedIn(true);
             Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
                 .then(([info, savedMovies]) => {
@@ -264,64 +290,63 @@ function App() {
                 .catch((e) => {
                     setInfoMessage(errorMessages(e));
                     setIsInfoTooltipOpen(true);
-                })
-            ;
+                });
         }
     }, [loggedIn]);
 
     return (
-        <CurrentUserContext.Provider value={ currentUser }>
+        <CurrentUserContext.Provider value={currentUser}>
             <div className="App">
                 <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        component={ Main }
+                    <Route exact path="/" component={Main} />
+                    <ProtectedRoute
+                        path="/movies"
+                        component={Movies}
+                        movies={movies}
+                        savedMovies={savedMovies}
+                        loggedIn={loggedIn}
+                        loading={loading}
+                        onAddMovie={handleAddMovie}
+                        onDislikeMovie={handleDislikeMovie}
+                        onSearchMovies={handleSearchMovies}
+                        onShortMovies={handleShortMovies}
+                        searchValue={searchValue}
+                        isShortMovies={isShortMovies}
+                        isInfoTooltipOpen={isInfoTooltipOpen}
                     />
                     <ProtectedRoute
-                        path='/movies'
-                        component={ Movies }
-                        movies={ movies }
-                        savedMovies={ savedMovies }
-                        loggedIn={ loggedIn }
-                        loading={ loading }
-                        onAddMovie={ handleAddMovie }
-                        onDislikeMovie={ handleDislikeMovie }
-                        onSearchMovies={ handleSearchMovies }
-                        onShortMovies={ handleShortMovies }
+                        path="/saved-movies"
+                        component={SavedMovies}
+                        loggedIn={loggedIn}
+                        loading={loading}
+                        movies={movies}
+                        savedMovies={savedMovies}
+                        onDeleteMovie={handleDeleteMovie}
+                        onSearchSavedMovies={handleSearchSavedMovies}
+                        onShortMovies={handleShortMovies}
+                        isInfoTooltipOpen={isInfoTooltipOpen}
                     />
                     <ProtectedRoute
-                        path='/saved-movies'
-                        component={ SavedMovies }
-                        loggedIn={ loggedIn }
-                        loading={ loading }
-                        movies={ movies }
-                        savedMovies={ savedMovies }
-                        onDeleteMovie={ handleDeleteMovie }
-                        onSearchSavedMovies={ handleSearchSavedMovies }
-                        onShortMovies={ handleShortMovies }
-                    />
-                    <ProtectedRoute
-                        loggedIn={ loggedIn }
+                        loggedIn={loggedIn}
                         path="/profile"
-                        onUpdateUser={ handleUpdateUser }
-                        loading= { loading }
-                        onSignOut={ handleSignOut }
-                        component={ Profile }
+                        onUpdateUser={handleUpdateUser}
+                        loading={loading}
+                        onSignOut={handleSignOut}
+                        component={Profile}
                     />
-                    <Route path="/signin" >
-                        <Login onAuth={ handleAuthorization } loading= { loading }/>
+                    <Route path="/signin">
+                        <Login onAuth={handleAuthorization} loading={loading} />
                     </Route>
-                    <Route path="/signup" >
-                        <Register onReg={ handleRegistration } loading = { loading }/>
+                    <Route path="/signup">
+                        <Register onReg={handleRegistration} loading={loading} />
                     </Route>
-                    <Route path="/*" component={ NotFound } />
+                    <Route path="/*" component={NotFound} />
                 </Switch>
                 <InfoTooltip
-                    isOpen={ isInfoTooltipOpen }
-                    onClose={ closeInfoTooltip }
-                    isSuccess={ isSuccess }
-                    infoMessage={ infoMessage }
+                    isOpen={isInfoTooltipOpen}
+                    onClose={closeInfoTooltip}
+                    isSuccess={isSuccess}
+                    infoMessage={infoMessage}
                 />
             </div>
         </CurrentUserContext.Provider>

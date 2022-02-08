@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function useFormWithValidation() {
     const [values, setValues] = React.useState({});
@@ -9,12 +9,12 @@ function useFormWithValidation() {
         const target = event.target;
         const name = target.name;
         const value = target.value;
-        setValues({...values, [name]: value});
-        setErrors({...errors, [name]: target.validationMessage });
+        setValues({ ...values, [name]: value });
+        setErrors({ ...errors, [name]: target.validationMessage });
         setIsValid(target.closest("form").checkValidity());
     };
 
-    return { values, handleChange, errors, isValid};
+    return { values, handleChange, errors, isValid };
 }
 
 export default useFormWithValidation;

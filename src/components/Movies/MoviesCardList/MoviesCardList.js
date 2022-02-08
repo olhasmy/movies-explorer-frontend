@@ -1,10 +1,16 @@
-import React, {useState} from 'react';
-import './MoviesCardList.css';
+import React, { useState } from "react";
+import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import MoviesCardMore from '../MoviesCardMore/MoviesCardMore';
-import { useLocation } from 'react-router-dom';
+import MoviesCardMore from "../MoviesCardMore/MoviesCardMore";
+import { useLocation } from "react-router-dom";
 
-function MoviesCardList({ movies, savedMovies, onAddMovie, onDeleteMovie, onDislikeMovie }) {
+function MoviesCardList({
+                            movies,
+                            savedMovies,
+                            onAddMovie,
+                            onDeleteMovie,
+                            onDislikeMovie,
+                        }) {
     const [windowResizing, setWindowResizing] = useState(false);
     const [shownMovies, setShownMovies] = React.useState([]);
     const [shownMoviesCount, setShownMoviesCount] = React.useState(0);
@@ -47,43 +53,49 @@ function MoviesCardList({ movies, savedMovies, onAddMovie, onDeleteMovie, onDisl
             timeout = setTimeout(() => {
                 setWindowResizing(false);
             }, 200);
-        }
+        };
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     return (
         <ul className="cards">
-            { location === '/movies' ?
+            {location === "/movies" ? (
                 <>
-                    { shownMovies.map(movie => (
+                    {shownMovies.map((movie) => (
                         <MoviesCard
-                            key={ movie.id || movie._id }
-                            movie={ movie }
-                            onAddMovie={ onAddMovie }
-                            onDeleteMovie={ onDeleteMovie }
-                            onDislikeMovie={ onDislikeMovie }
-                            movies={ movies }
-                            savedMovies={ savedMovies }
+                            key={movie.id || movie._id}
+                            movie={movie}
+                            onAddMovie={onAddMovie}
+                            onDeleteMovie={onDeleteMovie}
+                            onDislikeMovie={onDislikeMovie}
+                            movies={movies}
+                            savedMovies={savedMovies}
                         />
                     ))}
-                    <MoviesCardMore onMoreClick={ handleMoreClick } showButtonMore={showButtonMore}/>
+                    <MoviesCardMore
+                        onMoreClick={handleMoreClick}
+                        showButtonMore={showButtonMore}
+                    />
                 </>
-                :
+            ) : (
                 <>
-                    { savedMovies.slice(0).reverse().map(movie => (
-                        <MoviesCard
-                            key={ movie.id || movie._id }
-                            movie={ movie }
-                            onAddMovie={ onAddMovie }
-                            onDeleteMovie={ onDeleteMovie }
-                            onDislikeMovie={ onDislikeMovie }
-                            movies={ movie }
-                            savedMovies={ savedMovies }
-                        />
-                    ))}
+                    {savedMovies
+                        .slice(0)
+                        .reverse()
+                        .map((movie) => (
+                            <MoviesCard
+                                key={movie.id || movie._id}
+                                movie={movie}
+                                onAddMovie={onAddMovie}
+                                onDeleteMovie={onDeleteMovie}
+                                onDislikeMovie={onDislikeMovie}
+                                movies={movie}
+                                savedMovies={savedMovies}
+                            />
+                        ))}
                 </>
-            }
+            )}
         </ul>
     );
 }

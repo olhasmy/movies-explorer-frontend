@@ -1,29 +1,42 @@
-import React from 'react';
+import React from "react";
 import Header from "../Header/Header";
 import SearchForm from "./SearchForm/SearchForm";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Preloader from "./Preloader/Preloader";
 
-function Movies({ movies, savedMovies, loading, onAddMovie, onDislikeMovie, onSearchMovies, onShortMovies }) {
-
+function Movies({
+                    movies,
+                    savedMovies,
+                    loading,
+                    onAddMovie,
+                    onDislikeMovie,
+                    onSearchMovies,
+                    onShortMovies,
+                    isShortMovies,
+                    searchValue,
+                    isInfoTooltipOpen,
+                }) {
     return (
         <>
-            <Header/>
+            <Header />
             <SearchForm
-                onSearchMovies={ onSearchMovies }
-                onShortMovies={ onShortMovies }
+                onSearchMovies={onSearchMovies}
+                onShortMovies={onShortMovies}
+                searchValue={searchValue}
+                isShortMovies={isShortMovies}
+                isInfoTooltipOpen={isInfoTooltipOpen}
             />
-            { loading ?
-                <Preloader/>
-                :
+            {loading ? (
+                <Preloader />
+            ) : (
                 <MoviesCardList
-                    movies={ movies }
-                    onAddMovie={ onAddMovie }
-                    onDislikeMovie={ onDislikeMovie }
-                    savedMovies={ savedMovies }
+                    movies={movies}
+                    onAddMovie={onAddMovie}
+                    onDislikeMovie={onDislikeMovie}
+                    savedMovies={savedMovies}
                 />
-            }
+            )}
             <Footer />
         </>
     );

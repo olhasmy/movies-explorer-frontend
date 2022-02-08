@@ -1,11 +1,10 @@
-import React from 'react';
-import './Login.css';
+import React from "react";
+import "./Login.css";
 import Form from "../Form/Form";
 import Preloader from "../Movies/Preloader/Preloader";
 import useFormWithValidation from "../../utils/useFormWithValidation";
 
 function Login({ onAuth, loading }) {
-
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     function handleSubmit(e) {
@@ -17,16 +16,18 @@ function Login({ onAuth, loading }) {
         <Form
             name="login"
             title="Рады видеть!"
-            submitBtnText={ loading ? "Выполняется вход..." : "Войти" }
+            submitBtnText={loading ? "Выполняется вход..." : "Войти"}
             question="Ещё не зарегистрированы?"
             nav="Регистрация"
-            onSubmit={ handleSubmit }
-            isValid={ isValid }
+            onSubmit={handleSubmit}
+            isValid={isValid}
         >
-            { loading ? <Preloader/> : <></>}
+            {loading ? <Preloader /> : <></>}
             <div className="login">
                 <div className="inputs">
-                    <label className="login__input-label" htmlFor="email">E-mail</label>
+                    <label className="login__input-label" htmlFor="email">
+                        E-mail
+                    </label>
                     <input
                         required
                         minLength="2"
@@ -35,24 +36,26 @@ function Login({ onAuth, loading }) {
                         type="email"
                         name="email"
                         autoComplete="on"
-                        value={ values.email || ""}
-                        onChange={ handleChange }
+                        value={values.email || ""}
+                        onChange={handleChange}
                         id="email"
                     />
-                    <span className="login__input-span">{ errors.email }</span>
-                    <label className="login__input-label" htmlFor="password">Пароль</label>
+                    <span className="login__input-span">{errors.email}</span>
+                    <label className="login__input-label" htmlFor="password">
+                        Пароль
+                    </label>
                     <input
                         required
                         className="login__input login__input_for_password"
                         type="password"
                         name="password"
                         autoComplete="on"
-                        value={ values.password || "" }
-                        onChange={ handleChange }
+                        value={values.password || ""}
+                        onChange={handleChange}
                         minLength="8"
                         id="password"
                     />
-                    <span className="login__input-span">{ errors.password }</span>
+                    <span className="login__input-span">{errors.password}</span>
                 </div>
             </div>
         </Form>

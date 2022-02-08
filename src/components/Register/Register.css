@@ -48,6 +48,7 @@
     font-weight: 400;
     line-height: 12px;
     letter-spacing: 0;
+    max-width: 396px;
     text-align: left;
 }
 

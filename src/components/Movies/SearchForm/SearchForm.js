@@ -1,9 +1,16 @@
-import React from 'react';
-import './SearchForm.css';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
-import {useLocation} from "react-router-dom";
+import React from "react";
+import "./SearchForm.css";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import { useLocation } from "react-router-dom";
 
-function SearchForm({ onSearchMovies, onShortMovies, onSearchSavedMovies }) {
+function SearchForm({
+                        onSearchMovies,
+                        onShortMovies,
+                        onSearchSavedMovies,
+                        isShortMovies,
+                        searchValue,
+                        isInfoTooltipOpen,
+                    }) {
     const [search, setSearch] = React.useState("");
     const [isSearchValid, setIsSearchValid] = React.useState(true);
     const location = useLocation().pathname;
@@ -25,23 +32,41 @@ function SearchForm({ onSearchMovies, onShortMovies, onSearchSavedMovies }) {
     }
 
     React.useEffect(() => {
-        setSearch(localStorage.getItem('keyword'))
-    }, [])
+        setSearch(localStorage.getItem("keyword"));
+    }, []);
+
+    React.useEffect(() => {}, [searchValue]);
 
     return (
-        <form className="search" onSubmit={location === "/movies" ? onSubmit : onSubmitSavedMovies }>
+        <form
+            className="search"
+            onSubmit={location === "/movies" ? onSubmit : onSubmitSavedMovies}
+        >
             <div className="search__form">
-                <input className="search__form-input"
-                       type="text"
-                       autoComplete="off"
-                       placeholder="Фильм"
-                       required
-                       onChange={ handleChange }
+                <input
+                    className="search__form-input"
+                    type="text"
+                    autoComplete="off"
+                    placeholder={searchValue?.keyword || "Фильм"}
+                    required
+                    onChange={handleChange}
+                    disabled={isInfoTooltipOpen}
                 />
-                <span className={ isSearchValid ? "search__form-span_hidden" : "search__form-span" }>Нужно ввести ключевое слово</span>
+                <span
+                    className={
+                        isSearchValid ? "search__form-span_hidden" : "search__form-span"
+                    }
+                >
+          Нужно ввести ключевое слово
+        </span>
                 <div className="search__form-container">
-                    <button className="search__form-button_find" type="submit">Найти</button>
-                    <FilterCheckbox onShortMovies={ onShortMovies } />
+                    <button className="search__form-button_find" type="submit">
+                        Найти
+                    </button>
+                    <FilterCheckbox
+                        onShortMovies={onShortMovies}
+                        isShortMovies={isShortMovies}
+                    />
                 </div>
             </div>
         </form>

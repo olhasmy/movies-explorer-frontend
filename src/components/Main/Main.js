@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Header from "../Header/Header";
 import Promo from "./Promo/Promo";
 import AboutProject from "./AboutProject/AboutProject";
@@ -8,12 +8,11 @@ import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
 function Main() {
-
     const main = true;
 
     return (
         <main>
-            <Header main = { main }/>
+            <Header main={main} />
             <>
                 <Promo />
                 <AboutProject />
