@@ -30,7 +30,9 @@ function MoviesCard({
     }
 
     function handleOpenMovie() {
-        window.open(movie.trailer, "_blank");
+        location === "/movies"
+            ? window.open(movie.trailerLink, "_blank")
+            : window.open(movie.trailer, "_blank")
     }
 
     return (
