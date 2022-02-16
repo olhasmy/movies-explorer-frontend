@@ -14,7 +14,6 @@ import * as moviesApi from "../../utils/MoviesApi";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import InfoTooltip from "../InfoTooltiip/InfoTooltip";
 import { errorMessages } from "../../utils/errorMessages";
-import {getSavedMovies} from "../../utils/MainApi";
 
 function App() {
     const history = useHistory();
