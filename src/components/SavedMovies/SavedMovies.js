@@ -6,11 +6,12 @@ import Footer from "../Footer/Footer";
 
 function savedMovies({
                          movies,
-                         savedMovies,
+                         userSavedMovies,
                          loading,
                          onDeleteMovie,
                          onShortMovies,
                          onSearchSavedMovies,
+                         isInfoTooltipOpen,
                      }) {
     return (
         <>
@@ -18,9 +19,10 @@ function savedMovies({
             <SearchForm
                 onSearchSavedMovies={onSearchSavedMovies}
                 onShortMovies={onShortMovies}
+                isInfoTooltipOpen={isInfoTooltipOpen}
             />
             <MoviesCardList
-                savedMovies={savedMovies}
+                userSavedMovies={userSavedMovies}
                 loading={loading}
                 onDeleteMovie={onDeleteMovie}
                 movies={movies}

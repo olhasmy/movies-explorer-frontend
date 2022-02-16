@@ -49,6 +49,7 @@
     letter-spacing: 0;
     text-align: left;
     color: #000;
+    max-width: 500px;
 }
 
 .card__group-duration {
@@ -91,6 +92,12 @@
 
 .card__group-cross {
     background-image: url('../../../images/icon__cross.svg');
+}
+
+@media screen and (max-width: 810px) {
+    .card__group-name {
+        max-width: 400px;
+    }
 }
 
 @media screen and (max-width: 643px) {

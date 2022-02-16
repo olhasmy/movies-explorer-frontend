@@ -17,6 +17,10 @@
     color: #000;
 }
 
+.nav__links-item_main {
+    color: #FFF;
+}
+
 .nav__links_for_user-signup {
     color: #FFF;
     background-color: #000;
@@ -61,7 +65,7 @@
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 .nav__links_for_films-item {
@@ -129,6 +133,10 @@
     transition: opacity 0.3s linear;
     border: none;
     background-color: transparent;
+}
+
+.nav__button-burger_white{
+    background-image: url('../../images/icon__COLOR_icon-white.svg');
 }
 
 .nav__button-burger:hover {

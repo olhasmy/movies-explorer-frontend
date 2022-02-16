@@ -6,10 +6,10 @@ import { useLocation } from "react-router-dom";
 
 function MoviesCardList({
                             movies,
-                            savedMovies,
                             onAddMovie,
                             onDeleteMovie,
                             onDislikeMovie,
+                            userSavedMovies,
                         }) {
     const [windowResizing, setWindowResizing] = useState(false);
     const [shownMovies, setShownMovies] = React.useState([]);
@@ -69,8 +69,7 @@ function MoviesCardList({
                             onAddMovie={onAddMovie}
                             onDeleteMovie={onDeleteMovie}
                             onDislikeMovie={onDislikeMovie}
-                            movies={movies}
-                            savedMovies={savedMovies}
+                            userSavedMovies={userSavedMovies}
                         />
                     ))}
                     <MoviesCardMore
@@ -80,7 +79,7 @@ function MoviesCardList({
                 </>
             ) : (
                 <>
-                    {savedMovies
+                    {userSavedMovies
                         .slice(0)
                         .reverse()
                         .map((movie) => (
@@ -90,8 +89,7 @@ function MoviesCardList({
                                 onAddMovie={onAddMovie}
                                 onDeleteMovie={onDeleteMovie}
                                 onDislikeMovie={onDislikeMovie}
-                                movies={movie}
-                                savedMovies={savedMovies}
+                                userSavedMovies={userSavedMovies}
                             />
                         ))}
                 </>

@@ -4,14 +4,14 @@ import { useLocation } from "react-router-dom";
 
 function MoviesCard({
                         movie,
-                        savedMovies,
                         onAddMovie,
                         onDeleteMovie,
                         onDislikeMovie,
+                        userSavedMovies,
                     }) {
     const location = useLocation().pathname;
 
-    const isLiked = savedMovies.find((item) => item.movieId === movie.id);
+    const isLiked = userSavedMovies.find((item) => item.movieId === movie.id);
 
     const cardLikeButtonClassName = `card__group-button ${
         isLiked ? "card__group-like_active" : "card__group-like"

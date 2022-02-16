@@ -7,12 +7,12 @@ import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
-function Main() {
+function Main({loggedIn}) {
     const main = true;
 
     return (
         <main>
-            <Header main={main} />
+            <Header main={main} loggedIn={loggedIn}/>
             <>
                 <Promo />
                 <AboutProject />

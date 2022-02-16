@@ -12,11 +12,13 @@ function SearchForm({
                         isInfoTooltipOpen,
                     }) {
     const [search, setSearch] = React.useState("");
+    const [searchSaved, setSearchSaved] = React.useState("");
     const [isSearchValid, setIsSearchValid] = React.useState(true);
     const location = useLocation().pathname;
 
     function handleChange(e) {
         setSearch(e.target.value);
+        setSearchSaved(e.target.value);
         setIsSearchValid(e.target.closest("form").checkValidity());
     }
 
@@ -28,7 +30,7 @@ function SearchForm({
 
     function onSubmitSavedMovies(e) {
         e.preventDefault();
-        onSearchSavedMovies(search);
+        onSearchSavedMovies(searchSaved);
     }
 
     React.useEffect(() => {

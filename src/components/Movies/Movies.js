@@ -7,7 +7,6 @@ import Preloader from "./Preloader/Preloader";
 
 function Movies({
                     movies,
-                    savedMovies,
                     loading,
                     onAddMovie,
                     onDislikeMovie,
@@ -16,6 +15,7 @@ function Movies({
                     isShortMovies,
                     searchValue,
                     isInfoTooltipOpen,
+                    userSavedMovies
                 }) {
     return (
         <>
@@ -34,7 +34,7 @@ function Movies({
                     movies={movies}
                     onAddMovie={onAddMovie}
                     onDislikeMovie={onDislikeMovie}
-                    savedMovies={savedMovies}
+                    userSavedMovies={userSavedMovies}
                 />
             )}
             <Footer />

@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import NavTab from "../Main/NavTab/NavTab";
 
-function Navigation({ main }) {
+function Navigation({ main, loggedIn }) {
     const [isMenuOpened, setIsMenuOpened] = React.useState(false);
 
     function handleMenuOpen() {
@@ -18,7 +18,42 @@ function Navigation({ main }) {
     return (
         <nav className="nav">
             <Logo />
-            {main ? (
+            { localStorage.getItem("jwt") ? (
+                    <>
+                        <>
+                            <ul className="nav__links nav__links_for_films">
+                                <li>
+                                    <NavLink
+                                        to="/movies"
+                                        className={main? "nav__links-item nav__links_for_films-item nav__links-item_main" : " nav__links-item nav__links_for_films-item"}
+                                    >
+                                        Фильмы
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        to="/saved-movies"
+                                        className={main? "nav__links-item nav__links_for_films-item nav__links-item_main" : "nav__links-item nav__links_for_films-item"}
+                                    >
+                                        Сохраненные фильмы
+                                    </NavLink>
+                                </li>
+                            </ul>
+                            <ul className="nav__links nav__link_for_account">
+                                <li>
+                                    <Link
+                                        to="/profile"
+                                        className="nav__links-item nav__link_for_account-item"
+                                    >
+                                        Аккаунт
+                                        <div className="nav__account-icon" />
+                                    </Link>
+                                </li>
+                            </ul>
+                        </>
+                        <button className={main ? "nav__button-burger nav__button-burger_white" : "nav__button-burger"} onClick={handleMenuOpen} />
+                    </>
+            ) : (
                 <ul className="nav__links nav__links_for_user">
                     <li>
                         <Link
@@ -37,41 +72,6 @@ function Navigation({ main }) {
                         </Link>
                     </li>
                 </ul>
-            ) : (
-                <>
-                    <>
-                        <ul className="nav__links nav__links_for_films">
-                            <li>
-                                <NavLink
-                                    to="/movies"
-                                    className="nav__links-item nav__links_for_films-item"
-                                >
-                                    Фильмы
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink
-                                    to="/saved-movies"
-                                    className="nav__links-item nav__links_for_films-item"
-                                >
-                                    Сохраненные фильмы
-                                </NavLink>
-                            </li>
-                        </ul>
-                        <ul className="nav__links nav__link_for_account">
-                            <li>
-                                <Link
-                                    to="/profile"
-                                    className="nav__links-item nav__link_for_account-item"
-                                >
-                                    Аккаунт
-                                    <div className="nav__account-icon" />
-                                </Link>
-                            </li>
-                        </ul>
-                    </>
-                    <button className="nav__button-burger" onClick={handleMenuOpen} />
-                </>
             )}
             <NavTab isOpen={isMenuOpened} isClose={handleMenuClose} />
         </nav>

@@ -2,10 +2,10 @@ import React from "react";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ main }) {
+function Header({ loggedIn, main }) {
     return (
         <header className={main ? "header" : "header header__logged"}>
-            <Navigation main={main} />
+            <Navigation loggedIn={loggedIn} main={main}/>
         </header>
     );
 }

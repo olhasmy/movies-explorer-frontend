@@ -8,6 +8,7 @@ function Profile({ onSignOut, onUpdateUser }) {
     const currentUser = React.useContext(CurrentUserContext);
     const inputRef = React.useRef();
     const [notActive, setNotActive] = React.useState(true);
+    const pattern = "([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,}).([A-z]{2,8})";
 
     const { values, handleChange, errors, isValid } = useFormWithValidation();
 
@@ -18,10 +19,14 @@ function Profile({ onSignOut, onUpdateUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        onUpdateUser(
-            values.name || currentUser.name,
-            values.email || currentUser.email
-        );
+        if(values.name !== currentUser.name && values.email !== currentUser.email) {
+            onUpdateUser(
+                values.name || currentUser.name,
+                values.email || currentUser.email
+            );
+        } else {
+            return;
+        }
         setNotActive(true);
     }
 
@@ -68,6 +73,7 @@ function Profile({ onSignOut, onUpdateUser }) {
                             id="email"
                             onChange={handleChange}
                             defaultValue={currentUser.email}
+                            pattern={pattern}
                         />
                     </div>
                     <span className="profile__input-span">{errors.email}</span>

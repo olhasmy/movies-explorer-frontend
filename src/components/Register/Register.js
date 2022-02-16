@@ -5,6 +5,7 @@ import useFormWithValidation from "../../utils/useFormWithValidation";
 
 function Register({ onReg, loading }) {
     const { values, handleChange, errors, isValid } = useFormWithValidation();
+    const pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -55,6 +56,7 @@ function Register({ onReg, loading }) {
                         value={values.email || ""}
                         onChange={handleChange}
                         id="email"
+                        pattern={pattern}
                     />
                     <span className="register__input-span">{errors.email}</span>
                     <label className="register__input-label" htmlFor="password">
