@@ -1,5 +1,5 @@
-import React from 'react';
-import './Techs.css';
+import React from "react";
+import "./Techs.css";
 
 function Techs() {
     return (
@@ -7,7 +7,10 @@ function Techs() {
             <h2 className="techs__header">Технологии</h2>
             <div className="techs__info">
                 <h3 className="techs__info-header">7 технологий</h3>
-                <h4 className="techs__info-text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</h4>
+                <h4 className="techs__info-text">
+                    На курсе веб-разработки мы освоили технологии, которые применили в
+                    дипломном проекте.
+                </h4>
             </div>
             <ul className="techs__info-list">
                 <li className="techs__info-list_item">HTML</li>

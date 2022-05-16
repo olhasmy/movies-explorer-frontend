@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Header from "../Header/Header";
 import Promo from "./Promo/Promo";
 import AboutProject from "./AboutProject/AboutProject";
@@ -7,13 +7,12 @@ import AboutMe from "./AboutMe/AboutMe";
 import Portfolio from "./Portfolio/Portfolio";
 import Footer from "../Footer/Footer";
 
-function Main() {
-
+function Main({loggedIn}) {
     const main = true;
 
     return (
-        <>
-            <Header main = { main }/>
+        <main>
+            <Header main={main} loggedIn={loggedIn}/>
             <>
                 <Promo />
                 <AboutProject />
@@ -22,7 +21,7 @@ function Main() {
                 <Portfolio />
             </>
             <Footer />
-        </>
+        </main>
     );
 }
 

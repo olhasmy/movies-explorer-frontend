@@ -29,8 +29,11 @@
     height: 100%;
     max-width: 220px;
     max-height: 122px;
-    object-fit: contain;
-    background-color: #61dafb;
+    object-fit: cover;
+}
+
+.card__img:hover {
+    cursor: pointer;
 }
 
 .card__group-name {
@@ -46,6 +49,7 @@
     letter-spacing: 0;
     text-align: left;
     color: #000;
+    max-width: 500px;
 }
 
 .card__group-duration {
@@ -78,7 +82,7 @@
     opacity: 0.5;
 }
 
-.card__group-like_not_active {
+.card__group-like {
     background-image: url('../../../images/like.svg');
 }
 
@@ -88,6 +92,12 @@
 
 .card__group-cross {
     background-image: url('../../../images/icon__cross.svg');
+}
+
+@media screen and (max-width: 810px) {
+    .card__group-name {
+        max-width: 400px;
+    }
 }
 
 @media screen and (max-width: 643px) {
