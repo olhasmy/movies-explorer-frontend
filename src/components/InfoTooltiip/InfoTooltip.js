@@ -1,6 +1,6 @@
 import React from "react";
 import ImgSuccess from "../../images/CheckMark.svg";
-import ImgBad from "../../images/Cross.svg";
+import ImgBad from "../../images/cross.svg";
 import buttonClose from "../../images/CloseIcon.svg";
 import "./InfoTooltip.css";
 
