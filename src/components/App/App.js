@@ -61,7 +61,6 @@ function App() {
             .then((res) => {
                 localStorage.setItem("jwt", res.jwt);
                 setLoggedIn(true);
-                console.log(res.jwt)
                 history.push("/movies");
                 setLoading(false);
                 setIsSuccess(true);
@@ -91,7 +90,7 @@ function App() {
         mainApi
             .setUserInfo(name, email)
             .then((name, email) => {
-                setCurrentUser(name, email);
+                setCurrentUser({name, email});
                 setIsSuccess(true);
                 setIsInfoTooltipOpen(true);
                 setInfoMessage("Данные успешно изменены!");
@@ -246,25 +245,27 @@ function App() {
         return () => document.removeEventListener("keydown", closeByEscape);
     }, []);
 
-    React.useEffect(() => {
-        if (localStorage.getItem("jwt")) {
-            const token = localStorage.getItem("jwt");
-            mainApi
-                .checkToken(token)
-                .then(() => {
-                    setLoggedIn(true);
-                })
-                .catch((e) => {
-                    setInfoMessage(errorMessages(e));
-                    setIsInfoTooltipOpen(true);
-                });
-        }
-    }, [loggedIn]);
+    // React.useEffect(() => {
+    //     if (localStorage.getItem("jwt")) {
+    //         const token = localStorage.getItem("jwt");
+    //         mainApi
+    //             .checkToken(token)
+    //             .then(() => {
+    //                 setLoggedIn(true);
+    //             })
+    //             .catch((e) => {
+    //                 setInfoMessage(errorMessages(e));
+    //                 setIsInfoTooltipOpen(true);
+    //             });
+    //     }
+    // }, [loggedIn]);
 
     React.useEffect(() => {
         if (localStorage.getItem("jwt")) {
-            Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies()])
+            const token = localStorage.getItem("jwt");
+            Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies(), mainApi.checkToken(token)])
                 .then(([info, savedMovies]) => {
+                    setLoggedIn(true);
                     setCurrentUser(info);
                     setSavedMovies(savedMovies);
                 })

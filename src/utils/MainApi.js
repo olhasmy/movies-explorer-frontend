@@ -92,7 +92,7 @@ export const saveMovie = (movie) => {
             trailer: movie.trailerLink,
             thumbnail: `${MOVIES_URL}${movie.image.formats.thumbnail.url}`,
             nameRU: movie.nameRU,
-            nameEN: movie.nameEN,
+            nameEN: movie.nameEN || 'Нет =(',
             movieId: movie.id,
         }),
     }).then((res) => handleResponse(res));
