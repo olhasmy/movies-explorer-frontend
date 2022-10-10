@@ -61,6 +61,7 @@ function App() {
             .then((res) => {
                 localStorage.setItem("jwt", res.jwt);
                 setLoggedIn(true);
+                console.log(res.jwt)
                 history.push("/movies");
                 setLoading(false);
                 setIsSuccess(true);
@@ -90,7 +91,7 @@ function App() {
         mainApi
             .setUserInfo(name, email)
             .then((name, email) => {
-                setCurrentUser({name, email});
+                setCurrentUser(name, email);
                 setIsSuccess(true);
                 setIsInfoTooltipOpen(true);
                 setInfoMessage("Данные успешно изменены!");
@@ -224,18 +225,6 @@ function App() {
     }
 
     React.useEffect(() => {
-        const localSearchMovies = localStorage.getItem("foundMovies");
-        const localSearchValue = localStorage.getItem("searchValue");
-        const localShotMovies = localStorage.getItem("isShortMovies");
-
-        if (localSearchValue && localSearchMovies && localShotMovies) {
-            setMovies(JSON.parse(localSearchMovies));
-            setSearchValue(JSON.parse(localSearchValue));
-            setIsShortMovies(JSON.parse(localShotMovies));
-        }
-    }, []);
-
-    React.useEffect(() => {
         const closeByEscape = (e) => {
             if (e.key === "Escape") {
                 closeInfoTooltip();
@@ -245,29 +234,14 @@ function App() {
         return () => document.removeEventListener("keydown", closeByEscape);
     }, []);
 
-    // React.useEffect(() => {
-    //     if (localStorage.getItem("jwt")) {
-    //         const token = localStorage.getItem("jwt");
-    //         mainApi
-    //             .checkToken(token)
-    //             .then(() => {
-    //                 setLoggedIn(true);
-    //             })
-    //             .catch((e) => {
-    //                 setInfoMessage(errorMessages(e));
-    //                 setIsInfoTooltipOpen(true);
-    //             });
-    //     }
-    // }, [loggedIn]);
-
     React.useEffect(() => {
-        if (localStorage.getItem("jwt")) {
-            const token = localStorage.getItem("jwt");
+        const token = localStorage.getItem("jwt");
+        if (token) {
             Promise.all([mainApi.getUserInfo(), mainApi.getSavedMovies(), mainApi.checkToken(token)])
                 .then(([info, savedMovies]) => {
-                    setLoggedIn(true);
                     setCurrentUser(info);
                     setSavedMovies(savedMovies);
+                    setLoggedIn(true);
                 })
                 .catch((e) => {
                     setInfoMessage(errorMessages(e));
@@ -275,6 +249,13 @@ function App() {
                 });
         }
     }, [loggedIn]);
+
+    React.useEffect(() => {
+    history.push(JSON.parse(window.sessionStorage.getItem("lastRoute") || "{}"))
+    window.onbeforeunload = () => {
+        window.sessionStorage.setItem("lastRoute", JSON.stringify(window.location.pathname))
+    }
+}, [history]);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
