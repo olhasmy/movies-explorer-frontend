@@ -49,7 +49,7 @@ function SearchForm({
                     className="search__form-input"
                     type="text"
                     autoComplete="off"
-                    placeholder={searchValue?.keyword || "Фильм"}
+                    placeholder={searchValue?.keyword || "Введите название фильма"}
                     required
                     onChange={handleChange}
                     disabled={isInfoTooltipOpen}

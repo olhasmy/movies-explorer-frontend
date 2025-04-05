@@ -30,16 +30,6 @@ function Footer() {
                             Github
                         </a>
                     </li>
-                    <li className="footer__info-link_item">
-                        <a
-                            href="https://ru-ru.facebook.com/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="footer__info-link_item"
-                        >
-                            Facebook
-                        </a>
-                    </li>
                 </ul>
             </div>
         </footer>

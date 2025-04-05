@@ -1,7 +1,7 @@
 import React from "react";
 import "./Logo.css";
 import { Link } from "react-router-dom";
-import logo from "../../images/logo.svg";
+import logo from "../../images/logo.webp";
 
 function Logo() {
     return (

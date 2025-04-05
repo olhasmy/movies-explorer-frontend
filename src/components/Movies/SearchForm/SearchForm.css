@@ -17,6 +17,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .search__form-container {
@@ -39,7 +40,6 @@
     letter-spacing: 0;
     margin: 0;
     padding: 0 0 0 19px;
-    position: relative;
 }
 
 .search__form-span {
@@ -53,13 +53,11 @@
     font-weight: 400;
     line-height: 12px;
     letter-spacing: 0;
-    text-align: left;
     max-width: 396px;
-    text-wrap: normal;
     position: absolute;
-    transform: translate(-50%, -40%);
-    top: 50%;
-    left: 40%;
+    transform: translate(-50%, 0);
+    bottom: 0;
+    left: 50%;
 }
 
 .search__form-span_hidden {

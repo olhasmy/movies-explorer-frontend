@@ -9,7 +9,7 @@ function Portfolio() {
             <ul className="portfolio__links">
                 <li className="portfolio__link">
                     <a
-                        href="https://gonzoooo.github.io/how-to-learn"
+                        href="https://olhasmy.github.io/how-to-learn"
                         target="_blank"
                         rel="noreferrer"
                         className="portfolio__links-item"
@@ -24,7 +24,7 @@ function Portfolio() {
                 </li>
                 <li className="portfolio__link">
                     <a
-                        href="https://gonzoooo.github.io/russian-travel"
+                        href="https://olhasmy.github.io/russian-travel"
                         target="_blank"
                         rel="noreferrer"
                         className="portfolio__links-item"
@@ -39,7 +39,7 @@ function Portfolio() {
                 </li>
                 <li className="portfolio__link">
                     <a
-                        href="https://gonzoooo.nomoredomains.club"
+                        href="https://olhasmy.github.io/mesto"
                         target="_blank"
                         rel="noreferrer"
                         className="portfolio__links-item"
