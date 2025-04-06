@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://89.169.173.0:3001";
 const MOVIES_URL = "https://api.nomoreparties.co";
 
 export const handleResponse = (res) => {
